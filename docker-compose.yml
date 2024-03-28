@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: vamsi7
+      POSTGRES_DB: vamsi
+    ports:
+      - 15432:5432
+    networks:
+      - my-network
+    volumes:
+      - postgres-s-data:/var/lib/postgresql/data
+
+
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+   postgres-s-data:
+
+
+
+
+
+
